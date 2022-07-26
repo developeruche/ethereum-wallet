@@ -1,5 +1,6 @@
 ### Project Name: CoinDAO Wallet - A wallet implementation for evm compatiable chain
 
+![alt text](https://github.com/developeruche/ethereum-wallet/blob/main/public/demo.png)
 
 CoinDAO Wallet is a Open source wallet implementation for EVM compatiable chains 
 
@@ -14,6 +15,8 @@ you can switch chains by editing the network constant in the main.js file or by 
 #### Running the app
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+
 
 ## Getting Started
 
