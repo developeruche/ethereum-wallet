@@ -1,9 +1,15 @@
+/* Importing styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Montserrat', sans-serif;
+/* font-family: 'Montserrat Alternates', sans-serif; */
+  background-color: rgb(8, 8, 8);
 }
 
 a {
@@ -15,12 +21,403 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+
+/* Styling the navbar section */
+.navbar__hori {
+  padding: 2rem;
+  display: flex;
+}
+
+.navbar__hori__section__one {
+  flex: .5;
+}
+
+.navbar__hori__section__two {
+  flex: .5;
+}
+
+.navbar__hori__section__one i {
+  color: rgba(255, 255, 255, 0.884);
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.navbar__hori__section__two ul {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__hori__section__two li {
+  color: rgba(255, 255, 255, 0.884);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  font-family: 'Montserrat Alternates', sans-serif;
+  margin-left: 20px;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.navbar__hori__section__two li:hover {
+  transform: scale(1.1);
+  opacity: .8;
+}
+
+.navbar__hori__section__two i {
+  margin-right: 7px;
+}
+
+
+.banner {
+  max-width: 1150px;
+  margin: auto;
+  display: flex;
+}
+
+.banner__section__one {
+  flex: .5;
+  padding: 1rem;
+}
+
+.banner__section__two {
+  flex: .5;
+  padding: 1rem;
+}
+
+.banner__section__two img {
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 2px 4px 7px rgba(255, 255, 255, 0.09);
+}
+
+.banner__section__one h1 {
+  font-size: 4rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: rgba(255, 255, 255, 0.884);
+}
+
+.banner__section__one p {
+  font-size: 1rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: rgba(255, 255, 255, 0.774);
+}
+
+.banner__cta .import {
+  transition: .4s;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.884);
+  padding: .8rem;
+  color: rgba(255, 255, 255, 0.884);
+  background-color: transparent;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.banner__cta .create {
+  transition: .4s;
+  border-radius: 4px;
+  padding: .8rem;
+  color: rgba(8, 8, 8, 0.884);
+  background-color: rgba(255, 255, 255, 0.884);
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1.4rem;
+  margin-right: 20px;
+  font-size: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.banner__cta button:hover {
+  opacity: .8;
+}
+
+
+/* Styling The Import Wallet Modal */
+.import__wallet__wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(8px);
+  background-color: rgba(17, 17, 17, 0.2);
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.import__wallet {
+  padding: 1rem;
+  border-radius: 6px;
+  background-color: rgb(8, 8, 8);
+}
+
+.import__wallet__header {
+  display: flex;
+  justify-content: flex-end;
+  padding: .5rem;
+}
+
+.import__wallet__header i {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.774);
+}
+
+.import__wallet__body__input__wrapper {
+  padding: .5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.import__wallet__body__input__container input {
+  background-color: transparent;
+  border: none;
+  padding: .4rem;
+  outline-width: 0;
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: rgba(255, 255, 255, 0.774);
+}
+
+.import__wallet__body__input__container p {
+  width: 120px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.774);
+}
+
+.import__wallet__body__input__container {
+  background-color: rgb(17, 19, 23);
+  margin: .7rem;
+  padding: .3rem;
+  border-radius: 6px;
+}
+
+.import__wallet__body__cta {
+  padding: 1rem;
+}
+
+.import__wallet__body__cta button {
+  transition: .4s;
+  border-radius: 4px;
+  padding: .4rem;
+  color: rgba(8, 8, 8, 0.884);
+  background-color: rgba(255, 255, 255, 0.884);
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1rem;
+  margin-right: 20px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+
+/* ============= Styling The Dashboard ================= */
+.dashboard {
+  padding: 1.5rem;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.dashboard__section__one {
+  flex: .25;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard__section__two {
+  flex: .5;
+}
+
+.dashboard__section__three {
+  flex: .25;
+}
+
+.dashboard__section__one__header {
+  display: flex;
+  padding: .5rem;
+  color: rgba(255, 255, 255, 0.884);
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.dashboard__section__one__header i {
+  margin-right: 14px;
+  font-size: 26px;
+}
+
+.dashboard__section__one__link__container__intro {
+  padding: .6rem;
+  border-radius: 5px;
+  background: linear-gradient(45deg, #09009f, #00ff95);
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboard__section__one__link__container__intro i {
+  margin-right: 10px;
+}
+
+.dashboard__section__one__link__container ul {
+  padding: .8rem;
+}
+
+.dashboard__section__one__link__container ul li {
+  list-style: none;
+  padding: .6rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: rgba(255, 255, 255, 0.774);
+  display: flex;
+  align-items: center;
+}
+
+.dashboard__section__one__link__container ul li i {
+  margin-right: 20px;
+}
+
+.dashboard__section__one__address {
+  padding: 1rem;
+}
+
+.dashboard__section__one__address p {
+  color: rgba(255, 255, 255, 0.774);
+  text-align: center;
+  padding: .5rem;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.774);
+  cursor: pointer;
+}
+
+.dashboard__section__two {
+  padding: .7rem;
+}
+
+.dashboard__section__two__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.dashboard__section__two__header__section__one p {
+  font-size: 24px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.884);
+}
+
+.dashboard__section__two__header__section__one span input {
+  padding: .4rem;
+  border: none;
+  background-color: transparent;
+  outline-width: 0;
+  color: rgba(255, 255, 255, 0.774);
+}
+
+.dashboard__section__two__header__section__one span {
+  padding: .6rem;
+  border-radius: 5px;
+  background-color: rgb(17, 19, 23);
+  display: flex;
+  align-items: center;
+}
+
+.dashboard__section__two__header__section__one span i {
+  margin-left: 10px;
+  color: white;
+}
+
+.dashboard__section__two__asset__report {
+  padding: 1rem;
+}
+
+.dashboard__section__two__asset__report span {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.774);
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.dashboard__section__two__asset__report div {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard__section__two__asset__report h2 {
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.884);
+  margin-top: 5px;
+}
+
+.dashboard__section__two__asset__report h4 {
+  color: black;
+  margin-top: 5px;
+  padding: .4rem;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.774);
+  margin-left: 14px;
+}
+
+.dashboard__section__two__tranfer__form__wrapper {
+  padding: 1rem;
+}
+
+.dashboard__section__two__tranfer__form {
+  padding: .6rem;
+  border-radius: 5px;
+  background-color: rgba(17, 19, 23, 0.644);
+}
+
+.dashboard__section__two__tranfer__form__header h3 {
+  color: rgba(255, 255, 255, 0.884);
+  font-family: 'Montserrat Alternates', sans-serif;
+  text-align: center;
+}
+
+.dashboard__section__two__tranfer__form__address__input {
+  margin-top: 12px;
+  padding: .3rem;
+}
+
+.dashboard__section__two__tranfer__form__address__input input {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  outline-width: 0;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.774);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  padding: .3rem;
+}
+
+.dashboard__section__two__tranfer__form__address__input button {
+  transition: .4s;
+  border-radius: 4px;
+  padding: .4rem;
+  color: rgba(8, 8, 8, 0.884);
+  background-color: rgba(255, 255, 255, 0.884);
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1rem;
+  margin-right: 20px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.dashboard__section__three {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 1.3rem;
 }
