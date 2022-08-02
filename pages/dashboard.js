@@ -28,8 +28,7 @@ function Dashboard() {
 
     const copyAddr = () => {
         navigator.clipboard.writeText(userAddr);
-
-        alert("Copied Address")
+        console.log(userAddr);
     }
 
     const sendTokens = async () => {
