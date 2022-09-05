@@ -421,3 +421,9 @@ a {
   flex-direction: column;
   padding: 1.3rem;
 }
+
+.dashboard__section__two__tranfer__form__address__input p {
+  color: white;
+  font-size: 18px;
+  font-family: monospace;
+}

@@ -3,7 +3,7 @@ import {useState, useEffect} from "react";
 import { LineGraph } from "../components/lineGraph";
 import { PieChart } from "../components/pie";
 import router from "next/router";
-import { getEtherBalance, sendEther } from "../components/lib/main";
+import { getEtherBalance, sendEther, getTokenBalance, sendERC20Token } from "../components/lib/main";
 
 
 
@@ -15,8 +15,17 @@ function Dashboard() {
     const [userBal, setUserBal] = useState("");
 
     // form data
-    const [transferAddr, setTransferAddr] = useState("");
+    const [transferAddr, setTransferAddr] = useState(null);
     const [transferAmount, setTransferAmount] = useState(null);
+
+    // get erc20 token bal
+    const [erc20Address, setErc20Address] = useState(null);
+    const [erc20bal, setErc20bal] = useState("0.0")
+
+    // send erc20 token
+    const [tokenAddress, setTokenAddress] = useState("");
+    const [toAddress, setToAddress] = useState("");
+    const [sendAmount, setSendAount] = useState("");
 
 
     const fetchBal = async () => {
@@ -32,7 +41,30 @@ function Dashboard() {
     }
 
     const sendTokens = async () => {
-        await sendEther(transferAmount, transferAddr)
+        if(transferAddr && transferAmount) {
+            await sendEther(transferAmount, transferAddr)
+        } else {
+            alert("Please enter the address and amount");
+        }
+    }
+
+    const fetchERC20bal = async () => {
+
+        if(erc20Address) {
+            const res = await getTokenBalance(erc20Address);
+            setErc20bal(res);
+        }else {
+            alert("Enter contract address")
+        }
+        
+    }
+
+    const sendERC20Token_ = async () => {
+        if(tokenAddress && toAddress && sendAmount) {
+            await sendERC20Token(tokenAddress, toAddress, sendAmount);
+        }else {
+            alert("Enter valid data");
+        }
     }
 
 
@@ -129,6 +161,78 @@ function Dashboard() {
 
                             <div className="dashboard__section__two__tranfer__form__address__input">
                                 <button onClick={sendTokens}>Send</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="dashboard__section__two__tranfer__form__wrapper">
+
+                        <div className="dashboard__section__two__tranfer__form">
+                            <div className="dashboard__section__two__tranfer__form__header">
+                                <h3>Obtain Balance</h3>
+                            </div>
+                            <div className="dashboard__section__two__tranfer__form__address__input">
+                                <input 
+                                    text="text"
+                                    value={erc20Address}
+                                    onChange={e => {
+                                        setErc20Address(e.target.value)
+                                    }}
+                                    placeholder="Enter ERC20 Contract Address" 
+                                />
+                            </div>
+
+                            <div className="dashboard__section__two__tranfer__form__address__input">
+                                <p>{erc20bal}</p>
+                            </div>
+
+                            <div className="dashboard__section__two__tranfer__form__address__input">
+                                <button onClick={fetchERC20bal}>Query Balance</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="dashboard__section__two__tranfer__form__wrapper">
+
+                        <div className="dashboard__section__two__tranfer__form">
+                            <div className="dashboard__section__two__tranfer__form__header">
+                                <h3>Send ERC20 Token</h3>
+                            </div>
+                            <div className="dashboard__section__two__tranfer__form__address__input">
+                                <input 
+                                    text="text"
+                                    value={tokenAddress}
+                                    onChange={e => {
+                                        setTokenAddress(e.target.value)
+                                    }}
+                                    placeholder="Enter ERC20 Contract Address" 
+                                />
+                            </div>
+
+                            <div className="dashboard__section__two__tranfer__form__address__input">
+                                <input 
+                                    text="text"
+                                    value={toAddress}
+                                    onChange={e => {
+                                        setToAddress(e.target.value)
+                                    }}
+                                    placeholder="Enter address to recieve tokens" 
+                                />
+                            </div>
+
+                            <div className="dashboard__section__two__tranfer__form__address__input">
+                                <input 
+                                    text="number"
+                                    value={sendAmount}
+                                    onChange={e => {
+                                        setSendAount(e.target.value)
+                                    }}
+                                    placeholder="Enter Amount In Ether" 
+                                />
+                            </div>
+
+                            <div className="dashboard__section__two__tranfer__form__address__input">
+                                <button onClick={sendERC20Token_}>Send</button>
                             </div>
                         </div>
                     </div>

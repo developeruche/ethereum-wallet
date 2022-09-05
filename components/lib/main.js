@@ -1,16 +1,12 @@
 // Here all intraction with the blockchain would be donw with other account setup
 import { ethers, Wallet } from "ethers"
+import abi from "./abi";
 
 
 
 // Stating the constants needed in this application
-
-// network: using the Rinkeby testnet
-let network = 'ropsten';
-
-// provider: Infura or Etherscan will be automatically chosen
-let provider = ethers.getDefaultProvider(network);
-
+const rpcUrl = "https://goerli.infura.io/v3/ba80361523fe423bb149026a490266f0";
+const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
 
 
 
@@ -75,4 +71,37 @@ export const sendEther = async (amount, to) => {
         console.log('txHash', txObj.hash)
         alert("Tranaction Was Successful...")
     })
+}
+
+
+export const getTokenBalance = async (address) => {
+    // Obtaining the private key
+    const pv_key = await localStorage.getItem("w_private_key");
+
+    // Create a wallet instance
+    let wallet = new Wallet(pv_key, provider)
+
+    let token = new ethers.Contract(address, abi, wallet);
+
+    let bal = await token.balanceOf(wallet.address);
+
+    return ethers.utils.formatEther(bal);
+}
+
+export const sendERC20Token = async (address, to, amount) => {
+    alert("Sending...")
+    // Obtaining the private key
+    const pv_key = await localStorage.getItem("w_private_key");
+    // Create a wallet instance
+    let wallet = new Wallet(pv_key, provider);
+    let token = new ethers.Contract(address, abi, wallet);
+    let dec = await token.decimals();
+    try {
+        let res = await token.transfer(to, ethers.utils.parseUnits(amount, dec));
+        await res.wait();
+        alert("Token sent")
+        return true;
+    } catch {
+        return false;
+    }
 }
